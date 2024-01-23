@@ -5,5 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title><%= request.getAttribute("pageTitle") %></title>
+<link href="css/main.css" type="stylesheet">
 </head>
 <body>

@@ -24,10 +24,11 @@ public class MessagesShow extends CommonServlet {
 		try {
 			listeMessages = messageService.getAllMessageDor();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			ajouterErreur(e.getMessage(), request);
 		}
 		request.setAttribute("messages", listeMessages);
+		
 		view("messages", request, response);
 	}
 

@@ -31,8 +31,27 @@ public class MessageService {
 				messageList.add(messageDor);
 			}
 		}
+
+		Database.close();
 		
 		return messageList;
+	}
+
+	public int ajouterMessage(MessageDor messageDor) throws Exception {
+		if (Objects.isNull(messageDor)) {
+			return 0;
+		}
+		
+		Connection connection = Database.getConnection();
+		PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO Messages (pseudo, message) VALUES (?, ?)");
+		preparedStatement.setString(1, messageDor.getPseudo());
+		preparedStatement.setString(2, messageDor.getMessage());
+		int result = preparedStatement.executeUpdate();
+
+		Database.close();
+		
+		return result;
+		
 	}
 
 	/**
