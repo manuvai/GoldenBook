@@ -3,7 +3,7 @@ package modeles;
 public class MessageDor {
 	private int numMsg;
 	private String pseudo;
-	private String texte;
+	private String message;
 
 	public int getNumMsg() {
 		return numMsg;
@@ -17,11 +17,11 @@ public class MessageDor {
 	public void setPseudo(String pseudo) {
 		this.pseudo = pseudo;
 	}
-	public String getTexte() {
-		return texte;
+	public String getMessage() {
+		return message;
 	}
-	public void setTexte(String texte) {
-		this.texte = texte;
+	public void setMessage(String texte) {
+		this.message = texte;
 	}
 	
 	
