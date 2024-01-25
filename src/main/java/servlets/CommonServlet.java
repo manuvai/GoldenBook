@@ -9,10 +9,23 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public abstract class CommonServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Vide la valeur dans la session
+	 * 
+	 * @param name
+	 * @param session
+	 */
+	protected void viderSessionValue(String name, HttpSession session) {
+		if (Objects.nonNull(session) && Objects.nonNull(name)) {
+			session.setAttribute(name, null);
+		}
+	}
 
 	/**
 	 * Redirige la requête vers une page

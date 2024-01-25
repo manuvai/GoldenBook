@@ -5,8 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import modeles.MessageDor;
 
@@ -37,13 +39,21 @@ public class MessageService {
 		return messageList;
 	}
 
+	/**
+	 * Ajoute message
+	 * 
+	 * @param messageDor
+	 * @return
+	 * @throws Exception
+	 */
 	public int ajouterMessage(MessageDor messageDor) throws Exception {
 		if (Objects.isNull(messageDor)) {
 			return 0;
 		}
 		
 		Connection connection = Database.getConnection();
-		PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO Messages (pseudo, message) VALUES (?, ?)");
+		PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO Messages (pseudo, message) VALUES "
+				+ "(?, ?)");
 		preparedStatement.setString(1, messageDor.getPseudo());
 		preparedStatement.setString(2, messageDor.getMessage());
 		int result = preparedStatement.executeUpdate();
@@ -52,6 +62,40 @@ public class MessageService {
 		
 		return result;
 		
+	}
+
+	/**
+	 * Supprime 
+	 * 
+	 * @param inNumMsgList
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Integer> supprimerMessages(List<Integer> inNumMsgList) throws Exception {
+		List<Integer> numMsgList = new ArrayList<Integer>();
+		
+		if (Objects.nonNull(inNumMsgList) && !inNumMsgList.isEmpty()) {
+
+			Connection connection = Database.getConnection();
+			
+			PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM Messages WHERE NumMsg = ?");
+			
+			for (Integer numMsg : inNumMsgList) {
+				
+				preparedStatement.setInt(1, numMsg);
+				preparedStatement.addBatch();
+			}
+
+			int[] result = preparedStatement.executeBatch();
+			
+			numMsgList = Arrays.stream(result)
+					.boxed()
+					.collect(Collectors.toList());
+
+			Database.close();
+		}
+		
+		return numMsgList;
 	}
 
 	/**

@@ -5,6 +5,7 @@
 <ul>
 	<li><a href="new_message">Saisir un message</a></li>
 	<li><a href="messages">Afficher les messages</a></li>
+	<li><a href="delete">Supprimer des messages</a></li>
 </ul>
 
 <%@ include file="../template/tail.jsp" %>
