@@ -8,6 +8,6 @@
 <%= request.getAttribute("total_rows") %> message(s) enregistré(s).
 
 <div>
-	<a href="<%=request.getContextPath()%>">Retour menu principal</a>
+	<a class="button is-link is-light" href="<%=request.getContextPath()%>">Retour menu principal</a>
 </div>
 <%@ include file="../template/tail.jsp" %>

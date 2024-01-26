@@ -7,17 +7,28 @@
 
 
 <form action="" method="POST">
-    <label for="pseudo">Entrez votre pseudo :</label>
-    <input type="text" name="pseudo" id="pseudo" value="<%= request.getParameter("pseudo") == null ? "" : request.getParameter("pseudo") %>"/>
-    
-    <label for="message">Entrez votre message :</label>
-    <input type="text" name="message" id="message" value="<%= request.getParameter("message") == null ? "" : request.getParameter("message") %>"/>
+	<div class="field">
+		<label for="pseudo" class="label">Entrez votre pseudo :</label>
+		<div class="control">
+			<input type="text" class="input" name="pseudo" id="pseudo" value="<%= request.getParameter("pseudo") == null ? "" : request.getParameter("pseudo") %>"/>
+		</div>
+	</div>
+	<div class="field">
+    	<label for="message" class="label">Entrez votre message :</label>
+		<div class="control">
+    		<input type="text" class="input" name="message" id="message" value="<%= request.getParameter("message") == null ? "" : request.getParameter("message") %>"/>
+		</div>
+	</div>
 
-    <button type="submit">Ajouter</button>
+    <div class="field is-grouped">
+        <div class="control">
+            <button class="button is-link" type="submit">Ajouter</button>
+        </div>
+    </div>
 
 </form>
 
 <div>
-	<a href="<%=request.getContextPath()%>">Retour menu principal</a>
+	<a class="button is-link is-light" href="<%=request.getContextPath()%>">Retour menu principal</a>
 </div>
 <%@ include file="../template/tail.jsp" %>

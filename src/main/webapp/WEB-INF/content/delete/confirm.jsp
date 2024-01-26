@@ -16,13 +16,13 @@
 			<li><%= numMessageDor %></li>
 		<% } %>
 	</ul>
-	<a href="<%=request.getContextPath()%>/delete?a=no">Non</a>
-	<a href="<%=request.getContextPath()%>/delete/result">Oui</a>
-	<a href="<%=request.getContextPath()%>/delete">Annuler</a>
+	<a class="button is-info" href="<%=request.getContextPath()%>/delete?a=no">Non</a>
+	<a class="button is-danger" href="<%=request.getContextPath()%>/delete/result">Oui</a>
+	<a class="button is-link is-light" href="<%=request.getContextPath()%>/delete">Annuler</a>
 
 <% } %>
 
 <div>
-	<a href="<%=request.getContextPath()%>">Retour menu principal</a>
+	<a class="button is-link is-light" href="<%=request.getContextPath()%>">Retour menu principal</a>
 </div>
 <%@ include file="../../template/tail.jsp" %>
