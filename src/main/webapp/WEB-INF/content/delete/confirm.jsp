@@ -16,8 +16,9 @@
 			<li><%= numMessageDor %></li>
 		<% } %>
 	</ul>
-	<a href="<%=request.getContextPath()%>/delete">Non</a>
+	<a href="<%=request.getContextPath()%>/delete?a=no">Non</a>
 	<a href="<%=request.getContextPath()%>/delete/result">Oui</a>
+	<a href="<%=request.getContextPath()%>/delete">Annuler</a>
 
 <% } %>
 

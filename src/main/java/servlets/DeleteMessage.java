@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +26,12 @@ public class DeleteMessage extends CommonServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<MessageDor> listeMessages = new ArrayList<>();
 		HttpSession session = request.getSession();
-		viderSessionValue("numMsgList", session);
+		
+		boolean isActionNo = isActionNo(request);
+		
+		if (!isActionNo) {
+			viderSessionValue("numMsgList", session);
+		}
 		
 		try {
 			listeMessages = messageService.getAllMessageDor();
@@ -56,6 +60,18 @@ public class DeleteMessage extends CommonServlet {
 		
 		response.sendRedirect(request.getContextPath() + "/delete/confirm");
 		
+	}
+
+	/**
+	 * Détermine si la requête demande l'annulation de la suppression ou non
+	 * 
+	 * @param request
+	 * @return
+	 */
+	private boolean isActionNo(HttpServletRequest request) {
+		return Objects.nonNull(request)
+				&& Objects.nonNull((String) request.getParameter("a"))
+				&& "no".equals((String) request.getParameter("a"));
 	}
 
 	/**
