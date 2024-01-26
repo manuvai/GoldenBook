@@ -1,0 +1,23 @@
+@startuml
+
+title Suppression de messages
+hide footbox
+
+participant "/delete" as delete
+participant "/delete/confirm" as delete_confirm
+participant "/delete/result" as delete_result
+database "Messages" as db
+
+activate delete
+    delete -> delete : ajouterDonneesDansSession()
+    delete -> delete_confirm++ : GET
+        delete_confirm -> delete_confirm : afficherMessagesDepuisSession()
+        delete_confirm -> delete_result ++: GET
+            delete_result -> db++ : DELETE FROM Message
+            return
+        return
+    return
+
+deactivate delete
+
+@enduml
