@@ -2,6 +2,7 @@
 <%@page import="modeles.MessageDor"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% request.setAttribute("pageTitle", "Sélection des messages à supprimer"); %>
 <%@ include file="../../template/head.jsp" %>
 <h1>Sélection du ou des message(s) à supprimer</h1>
 <%@ include file="../../template/errors.jsp" %>
