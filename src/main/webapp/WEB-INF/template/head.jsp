@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title><%= Objects.isNull(request.getAttribute("pageTitle")) ? "Livre d'or" : request.getAttribute("pageTitle") %></title>
-<link href="css/normalize.css" type="stylesheet">
-<link href="css/skeleton.css" type="stylesheet">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/skeleton.css" rel="stylesheet">
 </head>
 <body>
