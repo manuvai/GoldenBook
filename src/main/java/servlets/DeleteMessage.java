@@ -27,9 +27,7 @@ public class DeleteMessage extends CommonServlet {
 		List<MessageDor> listeMessages = new ArrayList<>();
 		HttpSession session = request.getSession();
 		
-		boolean isActionNo = isActionNo(request);
-		
-		if (!isActionNo) {
+		if (!isActionNo(request)) {
 			viderSessionValue("numMsgList", session);
 		}
 		
