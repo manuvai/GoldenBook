@@ -16,6 +16,7 @@
 			<th>#NumMsg</th>
 			<th>Pseudo</th>
 			<th>Message</th>
+			<th>Actions</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -24,6 +25,12 @@
 				<td><%= messageDor.getNumMsg() %></td>
 				<td><%= messageDor.getPseudo() %></td>
 				<td><%= messageDor.getMessage() %></td>
+				<td>
+					<a class="button is-link is-light" 
+						href="<%=request.getContextPath()%>/update?numMsg=<%= messageDor.getNumMsg() %>">
+						Modifier
+					</a>
+				</td>
 			</tr>
 		<% } %>
 		</tbody>

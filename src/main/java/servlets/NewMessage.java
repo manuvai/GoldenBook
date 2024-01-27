@@ -19,6 +19,12 @@ public class NewMessage extends CommonServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		MessageDor messageDor = new MessageDor();
+		messageDor.setPseudo((String) request.getParameter("pseudo"));
+		messageDor.setMessage((String) request.getParameter("message"));
+		
+		request.setAttribute("messageDor", messageDor);
 		view("new_message", request, response);
 	}
 

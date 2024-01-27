@@ -39,8 +39,24 @@ public abstract class CommonServlet extends HttpServlet {
 	protected void view(String path, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (Objects.nonNull(path)) {
 
+			forward("/WEB-INF/content/" + path + ".jsp", request, response);
+		}
+	}
+
+	/**
+	 * Chaînage de la requête vers 
+	 * 
+	 * @param path
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	protected void forward(String path, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if (Objects.nonNull(path)) {
+
 			this.getServletContext()
-				.getRequestDispatcher("/WEB-INF/content/" + path + ".jsp")
+				.getRequestDispatcher(path)
 				.forward(request, response);
 		}
 	}

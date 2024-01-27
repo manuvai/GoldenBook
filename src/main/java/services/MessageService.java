@@ -38,6 +38,74 @@ public class MessageService {
 		
 		return messageList;
 	}
+	
+	/**
+	 * Récupération d'un message d'or à partir d'un identifiant
+	 * 
+	 * @param numMsg
+	 * @return
+	 * @throws Exception
+	 */
+	public MessageDor getMessageDorById(Integer numMsg) throws Exception {
+		MessageDor messageDor = null;
+		
+		if (Objects.nonNull(numMsg)) {
+
+			Connection connection = Database.getConnection();
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("SELECT * "
+							+ "FROM Messages "
+							+ "WHERE nummsg = ?");
+			preparedStatement.setInt(1, numMsg);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			if (resultSet.next()) {
+				messageDor = recupererMessageDor(resultSet);
+			}
+
+			Database.close();
+			
+		}
+		
+		return messageDor;
+	}
+	
+	/**
+	 * Met à jour le message en base
+	 * 
+	 * @param inMessageDor
+	 * @return
+	 * @throws Exception 
+	 */
+	public MessageDor updateMessageDor(MessageDor inMessageDor) throws Exception {
+		MessageDor messageDor = null;
+		
+		if (Objects.nonNull(inMessageDor)) {
+			int numMsg = inMessageDor.getNumMsg();
+
+			Connection connection = Database.getConnection();
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("UPDATE Messages "
+							+ "SET pseudo = ?, "
+							+ "	message = ?"
+							+ "WHERE nummsg = ?");
+			
+			preparedStatement.setString(1, inMessageDor.getPseudo());
+			preparedStatement.setString(2, inMessageDor.getMessage());
+			preparedStatement.setInt(3, numMsg);
+			
+			int result = preparedStatement.executeUpdate();
+			
+			if (result > 0) {
+				messageDor = getMessageDorById(numMsg);
+			}
+
+			Database.close();
+			
+		}
+		
+		return messageDor;
+	}
 
 	/**
 	 * Ajoute message
