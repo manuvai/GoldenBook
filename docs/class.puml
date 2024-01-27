@@ -1,0 +1,50 @@
+@startuml
+
+!includeurl https://raw.githubusercontent.com/manuvai/plantuml-utils/master/class_diagram_utils.puml
+
+package modeles {
+    class MessageDor {
+        -int(numMsg)
+        -string(pseudo)
+        -string(message)
+        -int("getNumMsg()")
+        -void("setNumMsg(int)")
+        -string("getPseudo()")
+        -void("setPseudo(String)")
+        -string("getMessage()")
+        -void("setMessage(String)")
+    }
+}
+
+package services {
+    class Database {
+        -{static} string(driverClassName)
+        -{static} string(url)
+        -{static} string(username)
+        -{static} string(userpass)
+        -{static} member(Connection, connection)
+        +{static} void("close()")
+        +{static} member(Connection, "getConnection()")
+    }
+
+    class MessageService {
+        +list(MessageDor, "getAllMessageDor()")
+        +member(MessageDor, "getMessageDorById(Integer)")
+        +member(MessageDor, "updateMessageDor(MessageDor)")
+        +int("ajouterMessage(MessageDor)")
+        +list(Integer, "supprimerMessages(List<Integer>)")
+        -member(MessageDor, "recupererMessageDor(ResultSet)")
+    }
+}
+
+package servlets {
+    abstract CommonServlet {
+        #void("viderSessionValue(String, HttpSession)")
+        #void("view(String, HttpServletRequest, HttpServletResponse)")
+        #void("forward(String, HttpServletRequest, HttpServletResponse)")
+        #void("viderErreurs(HttpServletRequest)")
+    }
+}
+
+
+@enduml
