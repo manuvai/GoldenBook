@@ -45,15 +45,46 @@ package servlets {
         #void("viderErreurs(HttpServletRequest)")
     }
 
-    class DeleteMessage extends CommonServlet {
+    class DeleteMessage {
         -boolean("isActionNo(HttpServletRequest)")
         -list(Integer, "recupererListeNumMsg(HttpServletRequest)")
     }
 
-    class DeleteMessageConfirm extends CommonServlet {
+    class DeleteMessageConfirm {
         -list(Integer, "recupererListeNumMsg(HttpSession)")
     }
+
+    class DeleteMessageResult {
+        -list(Integer, "recupererListeNumMsg(HttpSession)")
+        
+    }
+    class MessagesShow {
+        
+    }
+    class EncodingFilter {
+        +void("doFilter(ServletRequest, ServletResponse, FilterChain)")
+        +void("init(FilterConfig)")
+    }
+    class NewMessage {
+        
+    }
+    class UpdateMessage {
+        -member(Integer, "recupererNumeroMessage(HttpServletRequest)")
+    }
+    class Home {
+        
+    }
+
+    extends(DeleteMessage, CommonServlet, d)
+    extends(DeleteMessageConfirm, CommonServlet, d)
+    extends(DeleteMessageResult, CommonServlet, d)
+    extends(MessagesShow, CommonServlet, d)
+    extends(EncodingFilter, CommonServlet, u)
+    extends(NewMessage, CommonServlet, u)
+    extends(UpdateMessage, CommonServlet, u)
+    extends(Home, CommonServlet, u)
 }
 
+modeles .[#hidden]. servlets
 
 @enduml
