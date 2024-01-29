@@ -7,7 +7,8 @@
 <h1>Confirmez la suppression du ou des messages suivants</h1>
 <%@ include file="../../template/errors.jsp" %>
 
-<% if (request.getAttribute("numMsgList") != null 
+<% 
+if (request.getAttribute("numMsgList") != null 
 		&& ((List<Integer>) request.getAttribute("numMsgList")).size() > 0
 ) {%>
 	

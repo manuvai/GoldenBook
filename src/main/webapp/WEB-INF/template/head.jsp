@@ -1,6 +1,7 @@
 <%@page import="java.util.Objects"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%! @SuppressWarnings("unchecked") %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,4 +10,4 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 <body>
-<div class="content">
+<div class="content container">

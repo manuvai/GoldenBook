@@ -2,6 +2,7 @@
 <%@page import="modeles.MessageDor"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <% request.setAttribute("pageTitle", "Résultat de suppression"); %>
 <%@ include file="../../template/head.jsp" %>
 <h1>Confirmez la suppression du ou des messages suivants</h1>
