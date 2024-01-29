@@ -38,11 +38,20 @@ package services {
 }
 
 package servlets {
-    abstract CommonServlet {
+    abstract "CommonServlet extends HttpServlet" as CommonServlet {
         #void("viderSessionValue(String, HttpSession)")
         #void("view(String, HttpServletRequest, HttpServletResponse)")
         #void("forward(String, HttpServletRequest, HttpServletResponse)")
         #void("viderErreurs(HttpServletRequest)")
+    }
+
+    class DeleteMessage extends CommonServlet {
+        -boolean("isActionNo(HttpServletRequest)")
+        -list(Integer, "recupererListeNumMsg(HttpServletRequest)")
+    }
+
+    class DeleteMessageConfirm extends CommonServlet {
+        -list(Integer, "recupererListeNumMsg(HttpSession)")
     }
 }
 
