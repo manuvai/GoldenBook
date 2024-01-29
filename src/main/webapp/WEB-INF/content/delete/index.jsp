@@ -36,10 +36,16 @@
 				boolean isChecked = listeNumSession.contains(messageDor.getNumMsg());
 			%>
 				<tr>
-					<td><input type="checkbox" name="num_msg[]" value="<%= messageDor.getNumMsg() %>" <%= isChecked ? "checked" : "" %>/></td>
-					<td><%= messageDor.getNumMsg() %></td>
-					<td><%= messageDor.getPseudo() %></td>
-					<td><%= messageDor.getMessage() %></td>
+					<td>
+						<input type="checkbox" 
+							id="num_msg_<%= messageDor.getNumMsg() %>" 
+							name="num_msg[]" 
+							value="<%= messageDor.getNumMsg() %>" 
+							<%= isChecked ? "checked" : "" %>/>
+						</td>
+					<td><label for="num_msg_<%= messageDor.getNumMsg() %>"><%= messageDor.getNumMsg() %></label></td>
+					<td><label for="num_msg_<%= messageDor.getNumMsg() %>"><%= messageDor.getPseudo() %></label></td>
+					<td><label for="num_msg_<%= messageDor.getNumMsg() %>"><%= messageDor.getMessage() %></label></td>
 				</tr>
 			<% } %>
 		</tbody>
