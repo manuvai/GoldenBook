@@ -77,19 +77,16 @@ public class UpdateMessage extends CommonServlet {
 		messageDor.setPseudo(pseudo);
 		messageDor.setMessage(message);
 		
-		// TODO Mettre en place la modification en base
 		try {
 			messageService.updateMessageDor(messageDor);
 		} catch (Exception e) {
 			ajouterErreur("Une erreur est survenue lors de la MAJ", request);
 		}
 		
-		// TODO Prévoir l'affichage d'un message de succès
 		if (isValid(request)) {
 			ajouterErreur("Tout est OK, message mis à jour", request);
 		}
 		
-		// TODO Mettre en place la redirection
 		doGet(request, response);
 		
 	}

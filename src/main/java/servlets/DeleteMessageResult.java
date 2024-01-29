@@ -26,8 +26,6 @@ public class DeleteMessageResult extends CommonServlet {
 		List<Integer> numMsgList = recupererListeNumMsg(request.getSession());
 		
 		if (numMsgList.isEmpty()) {
-			// TODO Mettre en place la redirection
-			
 			ajouterErreur("Veuillez cocher au moins un message à supprimer", request);
 			return;
 		}
@@ -42,7 +40,6 @@ public class DeleteMessageResult extends CommonServlet {
 		
 		if (numMsgList.isEmpty()) {
 			ajouterErreur("Veuillez cocher au moins un message à supprimer", request);
-			// TODO Rediriger vers suppression
 			return;
 		}
 		
@@ -50,7 +47,6 @@ public class DeleteMessageResult extends CommonServlet {
 		try {
 			numMsgListExecution = messageService.supprimerMessages(numMsgList);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			ajouterErreur("Veuillez cocher au moins un message à supprimer", request);
 			e.printStackTrace();
 			return;
